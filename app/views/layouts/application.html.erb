@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= display_meta_tags %>
+
+    <!-- Additional meta tags for better social media support -->
+    <meta property="og:site_name" content="Course Platform">
+    <meta name="twitter:site" content="@courseplatform">
+    <meta name="robots" content="index, follow">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>

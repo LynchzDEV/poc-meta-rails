@@ -1,0 +1,46 @@
+<div style="padding: 20px; font-family: monospace; background: #f5f5f5;">
+  <h1>Meta Tags Debug</h1>
+
+  <% if @course %>
+    <h2>Course: <%= @course.title %></h2>
+
+    <h3>Generated URLs:</h3>
+    <ul>
+      <li><strong>Default OG Image:</strong> <%= default_og_image %></li>
+      <li><strong>Course OG Image:</strong> <%= course_og_image(@course) %></li>
+      <li><strong>Course URL:</strong> <%= course_url(@course) %></li>
+    </ul>
+
+    <h3>Meta Tags Preview:</h3>
+    <div style="background: white; padding: 10px; border: 1px solid #ccc;">
+      <%= display_meta_tags %>
+    </div>
+
+    <h3>Test Your URLs:</h3>
+    <ul>
+      <li><a href="<%= course_og_image(@course) %>" target="_blank">Test Course OG Image</a></li>
+      <li><a href="<%= default_og_image %>" target="_blank">Test Default OG Image</a></li>
+    </ul>
+
+    <h3>Social Media Testing Tools:</h3>
+    <ul>
+      <li><a href="https://developers.facebook.com/tools/debug/?q=<%= CGI.escape(course_url(@course)) %>" target="_blank">Facebook Debugger</a></li>
+      <li><a href="https://cards-dev.twitter.com/validator?url=<%= CGI.escape(course_url(@course)) %>" target="_blank">Twitter Card Validator</a></li>
+      <li><a href="https://www.linkedin.com/post-inspector/?url=<%= CGI.escape(course_url(@course)) %>" target="_blank">LinkedIn Post Inspector</a></li>
+    </ul>
+
+    <h3>Course Details:</h3>
+    <ul>
+      <li><strong>Title:</strong> <%= @course.title %></li>
+      <li><strong>School:</strong> <%= @course.school %></li>
+      <li><strong>Meta Title:</strong> <%= @course.meta_title %></li>
+      <li><strong>Meta Description:</strong> <%= @course.meta_description %></li>
+    </ul>
+
+  <% else %>
+    <p>No courses found. Please create a course first using:</p>
+    <pre>rails db:seed</pre>
+  <% end %>
+
+  <p><%= link_to "← Back to Courses", courses_path %></p>
+</div>

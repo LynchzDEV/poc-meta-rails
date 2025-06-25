@@ -18,14 +18,28 @@ class Course < ApplicationRecord
     "$#{price.to_f}"
   end
 
-  # Meta tag helper methods
+  # Meta tag helper methods optimized for social media
   def meta_title
-    "#{title} - #{school}"
+    # Keep under 60 characters for optimal social media display
+    title_part = title.truncate(40, omission: '')
+    school_part = school.truncate(15, omission: '')
+    "#{title_part} - #{school_part}"
   end
 
   def meta_description
-    "#{description.truncate(160)} | Duration: #{total_hours} hours | Price: #{formatted_price}"
+    # Optimize for social media (160 characters max)
+    base_description = description.truncate(100, omission: '...')
+    details = " | #{total_hours}h • #{formatted_price} • #{time_period.capitalize}"
+
+    max_length = 160 - details.length
+    if base_description.length > max_length
+      base_description = description.truncate(max_length, omission: '...')
+    end
+
+    "#{base_description}#{details}"
   end
 
-  # Remove the problematic meta_image_url method - we'll handle this in controllers/helpers
+  def meta_keywords
+    [school, title, 'course', 'education', time_period].join(', ')
+  end
 end
