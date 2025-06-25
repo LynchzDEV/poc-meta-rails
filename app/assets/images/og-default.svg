@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Main title -->
+  <text x="600" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" fill="white" font-weight="bold">
+    Course Platform
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="rgba(255,255,255,0.9)">
+    Learn New Skills Today
+  </text>
+
+  <!-- Decorative elements -->
+  <circle cx="200" cy="150" r="60" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1000" cy="480" r="80" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="150" cy="500" r="40" fill="rgba(255,255,255,0.12)"/>
+
+  <!-- Bottom text -->
+  <text x="600" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.8)">
+    Professional courses with expert instructors
+  </text>
+</svg>

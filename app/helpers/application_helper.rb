@@ -1,16 +1,13 @@
 module ApplicationHelper
   def default_og_image
-    return asset_url('og-default.svg') if Rails.env.production?
-    "#{request.base_url}/og-default.svg"
+    "https://mockimg.co/1200x630?bg=4f46e5&color=ffffff&text=Course+Platform"
   end
 
   def course_og_image(course)
     begin
       image_url = generate_reliable_course_image(course)
-
       uri = URI.parse(image_url)
       return image_url if uri.absolute? && %w[http https].include?(uri.scheme)
-
       default_og_image
     rescue StandardError => e
       Rails.logger.error "Failed to generate OG image for course #{course.id}: #{e.message}"
@@ -23,24 +20,21 @@ module ApplicationHelper
   def generate_reliable_course_image(course)
     title = url_safe_text(course.title, 30)
     school = url_safe_text(course.school, 20)
-
     services = [
       lambda { generate_placeholder_image(title, school) },
       lambda { generate_shields_image(title, school) },
       lambda { default_og_image }
     ]
-
     services.each do |service|
       result = service.call
       return result if result
     end
-
     default_og_image
   end
 
   def generate_placeholder_image(title, school)
     text = "#{title}%20%7C%20#{school}".gsub(/\s+/, '%20')
-    "https://via.placeholder.com/1200x630/4f46e5/ffffff?text=#{text}"
+    "https://mockimg.co/1200x630?bg=4f46e5&color=ffffff&text=#{text}"
   end
 
   def generate_shields_image(title, school)
